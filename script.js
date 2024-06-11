@@ -112,9 +112,8 @@ document.getElementById('quote-form').addEventListener('submit', function(event)
       console.error('Error:', error);
   });
 });
-function openForm(jobTitle, companyName) {
+function openForm(jobTitle) {
   document.getElementById("jobTitle").value = jobTitle;
-  document.getElementById("companyName").value = companyName;
   document.getElementById("myForm").style.display = "block";
   window.location.hash = "#myForm";
 }
@@ -127,8 +126,7 @@ function closeForm() {
 document.querySelectorAll('.apply-btn').forEach(button => {
   button.addEventListener('click', function() {
       const jobTitle = this.closest('.card').querySelector('.jobTitle').textContent;
-      const companyName = this.closest('.card').querySelector('.companyName').textContent;
-      openForm(jobTitle, companyName);
+      openForm(jobTitle);
   });
 });
 document.getElementById('myForm').addEventListener('submit', function(event) {
@@ -149,3 +147,37 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
       console.error('Error:', error);
   });
 });
+const contactDetails = {
+  usa: {
+    address: 'New York, NY 10012, US',
+    email: 'info@example.com',
+    phone: '+ 01 234 567 88',
+    fax: '+ 01 234 567 89'
+  },
+  india: {
+    address: 'Mumbai, MH 400001, India',
+    email: 'info@example.in',
+    phone: '+ 91 987 654 3210',
+    fax: '+ 91 987 654 3211'
+  }
+};
+
+const usaOfficeLink = document.getElementById('usaOffice');
+  const indiaOfficeLink = document.getElementById('indiaOffice');
+  const address = document.getElementById('address');
+  const email = document.getElementById('email');
+  const phone = document.getElementById('phone');
+
+  // Event listener for USA Office link
+  usaOfficeLink.addEventListener('click', function() {
+    address.textContent = 'New York, NY 10012, US';
+    email.textContent = 'info@example.com';
+    phone.textContent = '+01 234 567 88';
+  });
+
+  // Event listener for India Office link
+  indiaOfficeLink.addEventListener('click', function() {
+    address.textContent = 'New Delhi, India';
+    email.textContent = 'info@indiainfo.com';
+    phone.textContent = '+91 123 456 7890';
+  });
